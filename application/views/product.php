@@ -120,6 +120,7 @@
 										uploadProductImg(lastProductId,product_img,files.length);
 									}
 								// }
+								$("#tableProduct").dataTable().fnDestroy();
 								loadProducts();
 							}else{
 								alert(result.body);
@@ -251,6 +252,7 @@
 							dataType:"JSON",
 							success:function(result){
 								if (result.status == 200) {
+									$("#tableProduct").dataTable().fnDestroy();
 									loadProducts();
 								}else{
 									alert("Something went wrong");

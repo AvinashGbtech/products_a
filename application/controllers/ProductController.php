@@ -132,10 +132,10 @@ class ProductController extends CI_Controller {
 	}
 	public function getProductToEdit(){
 		$product_id = $this->input->post("product_id");
-		$result = $this->db->query("select * from product where id = ".$product_id)->row();
-		if (count($result) > 0) {
+		$result = $this->db->query("select * from product where id = ".$product_id);
+		if ($result->num_rows() > 0) {
 			$response['status'] = 200;
-			$response['data'] = $result;
+			$response['data'] = $result->row();
 		}else{
 			$response['status'] = 201;
 			$response['data'] = "No data found";
